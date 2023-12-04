@@ -5,19 +5,21 @@ import { baseUrl } from '../services/api'
 
 const FormSubmit = () => {
 
-    const navigate = useNavigate()
     const [sendOtpFormVisibility, setSendOtpFormVisibility] = useState(true)
     const [verifyFormVisibility, setVerifyFormVisibility] = useState(false)
     const [resetPasswordFromVisibility, setResetPasswordFromVisibility] = useState(false)
-    const [userName, setUserName] = useState("")
-    const [email, setEmail] = useState("")
+    const [phoneno, setPhoneno] = useState("")
     const [otp, setOtp] = useState("")
-    const [newPassword, setNewPassword] = useState("")
-    const [confirmNewPasssword, setConfirmNewPassword] = useState("")
+    const[formData, setFormData]=useState({
+        userName:"",
+        nickName:"",
+        game:"",
+    })
 
     const handleSendOtp = async (e) => {
+        console.log("phoneno",phoneno)
         e.preventDefault()
-        const response = await axios.post(`${baseUrl}/sendOtp`, { userName })
+        const response = await axios.post(`${baseUrl}/sendOtp`, { phoneno })
         console.log(response.status)
         if (response.status == 200) {
             setSendOtpFormVisibility(false)
@@ -29,7 +31,7 @@ const FormSubmit = () => {
     }
 
     const handleVerifyOtp = async () => {
-        const response = await axios.post(`${baseUrl}/veryfyOtp`, { userName, otp })
+        const response = await axios.post(`${baseUrl}/veryfyOtp`, { phoneno, otp })
 
         if (response.status == 200) {
             alert(response.data.message)
@@ -42,9 +44,9 @@ const FormSubmit = () => {
     }
 
     const handleResetPassword = async () => {
-        const response = await axios.post(`${baseUrl}/resetPassword`, { userName, newPassword })
+        const response = await axios.post(`${baseUrl}/formSubmit`, { formData,phoneno })
         if (response.status == 200) {
-            alert("Password Successfully updated")
+            alert("Form Successfully submitted")
             navigate("/")
         }
     }
@@ -62,18 +64,18 @@ const FormSubmit = () => {
                     <form onSubmit={(e) => handleSendOtp(e)}>
                         <div style={{ display: "flex", flexDirection: "column" }}>
                             <label className="label">
-                                User Name : {` `}
-                                <input placeholder='UserName' className="inputField" type='text' onChange={(e) => setUserName(e.target.value.trim())} />
+                                phoneno : {` `}
+                                <input placeholder='Enter you vlid phoneno...' className="inputField" type='text' onChange={(e) => setPhoneno(e.target.value.trim())} />
                             </label>
                             <br />
-                            <button className="button" >Send Otp</button>
+                            <button onClick={()=>handleSendOtp()} className="button" >Verify</button>
                         </div>
                     </form>
                 </div>}
                 <br />
 
                 {verifyFormVisibility && <div>
-                    <div>Otp has been send to your registered email addres.</div>
+                    <div>Otp has been send to your registered phoneno addres.</div>
                     <br/>
                     <label className="label">
                         Enter Otp : {` `}
@@ -83,31 +85,36 @@ const FormSubmit = () => {
                     <br/>
                     <button className="button" onClick={() => handleVerifyOtp()}> Verify</button>
                 </div>}
-
                 <br />
                 {resetPasswordFromVisibility && <div>
                     <div>
                         <label className="label">
-                            Enter New Password :{` `}
-                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setNewPassword(e.target.value)} />
+                            UserName :{` `}
+                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({userName:e.target.value})} />
                         </label>
                     </div>
                     <br/>
                     <div>
                         <label className="label">
-                            Confirm New Paswword :{` `}
-                            <input placeholder='Enter Confirm Password' className="inputField" type="text" onChange={(e) => setConfirmNewPassword(e.target.value)} />
-
+                            NickName :{` `}
+                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({nickName:e.target.value})} />
                         </label>
                     </div>
-                    <br />
+                    <br/>
                     <div>
-                        <button className="button" onClick={() => handleResetPassword()}>Reset Password</button>
+                        <label className="label">
+                             Game :{` `}
+                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({game:e.target.value})} />
+                        </label>
+                    </div>
+                    <br/>
+                    <div>
+                        <button className="button" onClick={() => handleResetPassword()}>Submit Form</button>
                     </div>
                 </div>}
                 <br/>
                 <div>
-                    <button className="button" onClick={() => resetFormDetails()}>Reset Form Details</button>
+                    <button className="button" onClick={() => resetFormDetails()}>Re - Enter phoneno</button>
                 </div>
             </div>
 
