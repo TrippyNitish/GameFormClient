@@ -44,7 +44,7 @@ const FormSubmit = () => {
     }
 
     const handleResetPassword = async () => {
-        const response = await axios.post(`${baseUrl}/formSubmit`, { formData,phoneno })
+        const response = await axios.post(`${baseUrl}/formSubmit`, { ...formData,phoneno })
         if (response.status == 200) {
             alert("Form Successfully submitted")
             navigate("/")
@@ -64,7 +64,7 @@ const FormSubmit = () => {
                     <form onSubmit={(e) => handleSendOtp(e)}>
                         <div style={{ display: "flex", flexDirection: "column" }}>
                             <label className="label">
-                                phoneno : {` `}
+                                Enter 12 digit Phoneno : {` `}
                                 <input placeholder='Enter you vlid phoneno...' className="inputField" type='text' onChange={(e) => setPhoneno(e.target.value.trim())} />
                             </label>
                             <br />
@@ -90,21 +90,21 @@ const FormSubmit = () => {
                     <div>
                         <label className="label">
                             UserName :{` `}
-                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({userName:e.target.value})} />
+                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({...formData,userName:e.target.value})} />
                         </label>
                     </div>
                     <br/>
                     <div>
                         <label className="label">
                             NickName :{` `}
-                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({nickName:e.target.value})} />
+                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({...formData, nickName:e.target.value})} />
                         </label>
                     </div>
                     <br/>
                     <div>
                         <label className="label">
                              Game :{` `}
-                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({game:e.target.value})} />
+                            <input placeholder='Enter New Password' className="inputField" type="text" onChange={(e) => setFormData({...formData, game:e.target.value})} />
                         </label>
                     </div>
                     <br/>
