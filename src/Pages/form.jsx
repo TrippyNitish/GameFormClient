@@ -2,8 +2,11 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import './formSubmit.css'
 import { baseUrl } from '../services/api'
+import { useNavigate } from 'react-router-dom'
 
 const FormSubmit = () => {
+
+    const navigate= useNavigate()
 
     const [sendOtpFormVisibility, setSendOtpFormVisibility] = useState(true)
     const [verifyFormVisibility, setVerifyFormVisibility] = useState(false)
@@ -51,6 +54,12 @@ const FormSubmit = () => {
         }
     }
 
+    const handleAdminClick = async () => {
+       
+            navigate("/admin")
+        
+    }
+
     const resetFormDetails = () => {
         setSendOtpFormVisibility(true)
         setVerifyFormVisibility(false)
@@ -59,6 +68,7 @@ const FormSubmit = () => {
 
     return (
         <div className='resetPaswordContainer'>
+        <div className='admin' onClick={()=>handleAdminClick()}>Admin</div>
             <div className='resetPaswordContainerSubClass'>
                 {sendOtpFormVisibility && <div display={{ display: "none" }}>
                     <form onSubmit={(e) => handleSendOtp(e)}>

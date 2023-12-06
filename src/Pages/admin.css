@@ -1,0 +1,26 @@
+
+
+
+.companyTable {
+    width: 100%;
+    max-height: calc(100vh - 120px);
+}
+
+.companyTableCell {
+    text-align: center;
+    color: black;
+    background-color: white;
+}
+
+
+.companyTableCellHeader {
+    padding: 10px;
+}
+
+.companyTableCellDataUserName:hover {
+    cursor: pointer;
+    background-color: #dfeffa;
+}
+
+
+
