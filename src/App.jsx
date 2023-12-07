@@ -7,16 +7,17 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Login from './Pages/loginPage';
 
 function App() {
 
   return (
     <>
       <Router>
-
         <Routes>
           <Route exact path="/" element={<FormSubmit />} />
           <Route exact path="/admin" element={<Admin />} />
+          <Route exact path="/login" element={<Login />} />
         </Routes>
       </Router>
     </>

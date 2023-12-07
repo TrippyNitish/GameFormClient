@@ -1,0 +1,73 @@
+.loginPage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #daf1fa, #789ef0);
+  
+  }
+  
+  .loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .captcha-container {
+    height: 100%;
+    width: 140px;
+    position: relative;
+  }
+  
+  
+  .captcha {
+    margin-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .userLoginFields {
+    width: 280px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  
+  }
+  
+  .loginInput {
+    font-size: 12px;
+    border: none;
+    margin-left: 5px;
+    padding: 5px;
+    border-left: 1px solid gray;
+    outline: none;
+  }
+  .userLoginFields:focus,
+  .userLoginFields:hover {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  #canv{
+    width: 130px;
+    height: 30px;
+    border-end-end-radius: 5px;
+    border-start-end-radius: 5px;
+  
+  }
+  .loginButton{
+    width: 280px;
+    background-color: rgb(57, 57, 240);
+  }
+  .loginButton:hover{
+    background-color: rgb(121, 121, 238);
+  }

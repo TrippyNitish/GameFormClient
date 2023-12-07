@@ -56,7 +56,7 @@ const FormSubmit = () => {
 
     const handleAdminClick = async () => {
        
-            navigate("/admin")
+            navigate("/login")
         
     }
 
