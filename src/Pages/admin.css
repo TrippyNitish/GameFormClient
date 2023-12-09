@@ -22,5 +22,13 @@
     background-color: #dfeffa;
 }
 
+.doenloadtosheet{
+    background-color: rgb(6, 77, 54);
+    padding: 10px 20px 10px 20px;
+}
 
+.doenloadtosheet:hover{
+    cursor: pointer;
+    background-color: rgb(13, 4, 110);
+}
 

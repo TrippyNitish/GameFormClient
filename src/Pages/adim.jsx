@@ -2,6 +2,9 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { baseUrl } from '../services/api'
 import './admin.css'
+import { saveToxls } from '../services/savetoxl'
+
+
 const Admin = () => {
 
     const [data, setData] = useState([]);
@@ -16,12 +19,17 @@ const Admin = () => {
         }
     }
 
+    const downloadtosheet=()=>{
+        saveToxls(data)
+    }
+
     useEffect(() => {
         dataApi()
     }, [])
 
     return (
         <div className='resetPaswordContainer'>
+            <div className='doenloadtosheet' onClick={()=>downloadtosheet()}> Download to Sheet</div>
             <table className="companyTable">
                 <tr className="companyTableCell">
                     <th className="companyTableCellHeader">Game</th>
